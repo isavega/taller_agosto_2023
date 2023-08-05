@@ -15,6 +15,7 @@ const CenteredContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: auto; /* Agrega margen automático para centrar el contenedor en la página */
 `;
 
 const Container: React.FC<ContainerProps> = ({ children }) => {

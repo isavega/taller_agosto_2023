@@ -6,6 +6,8 @@ interface TextProps {
 }
 
 const TextContainer = styled.div`
+  margin-top: 50px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +15,7 @@ const TextContainer = styled.div`
 
 const StyledText = styled.p`
   font-family: "Raleway", sans-serif;
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: 3rem;
   font-weight: 300;
   color: #ffffff;
 `;

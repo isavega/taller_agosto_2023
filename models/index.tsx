@@ -1,10 +1,14 @@
 export interface ICharacter {
-  _id: string;
-  Nombre: string;
-  Historia: string;
-  Imagen: string;
-  Genero: string;
-  Estado: string;
-  Ocupacion: string;
-  updatedAt: string;
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {};
+  location: {};
+  image: string;
+  episode: [];
+  url: string;
+  created: string;
 }
