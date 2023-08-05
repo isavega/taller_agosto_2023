@@ -8,7 +8,6 @@ interface ContainerProps {
 const CenteredContainer = styled.div`
   background-color: #000;
   opacity: 0.8;
-  border-radius: 15px;
   width: 100%;
   min-height: 100vh;
   height: 80%;

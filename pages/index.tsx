@@ -1,23 +1,27 @@
-import { ICharacter } from "@/models";
-import useSWR from "swr";
-import { useRouter } from "next/router";
-import { URL_API } from "@/helpers/api";
-import { fetcher } from "@/helpers/fetcher";
-import Container from "@/components/Container";
-import Grid from "@/components/Grid";
-import Card from "@/components/Card";
-import Text from "@/components/Text";
+import Card from '@/components/Card'
+import Container from '@/components/Container'
+import Grid from '@/components/Grid'
+import Text from '@/components/Text'
+import { Result } from '@/models/apiInterface'
+import { GetStaticProps, NextPage } from 'next'
+import { useRouter } from 'next/router'
+import { getAllCharacters } from './api/getAllCharacters'
 
-function Home() {
-  const { data } = useSWR(URL_API, fetcher);
+interface HomeProps {
+  characters: Result[]
+}
 
-  const characters: Array<ICharacter> = data?.results;
+export const getStaticProps: GetStaticProps = async () => {
+  const characters = await getAllCharacters()
 
-  const router = useRouter();
+  return { props: { characters } }
+}
 
-  const onClickHandler = (id: string) => {
-    router.push(`/character?id=${id}`);
-  };
+const Home: NextPage<HomeProps> = ({ characters }) => {
+  const router = useRouter()
+  const onClickHandler = (id: number) => {
+    router.push(`/${id}`)
+  }
 
   return (
     <Container>
@@ -28,12 +32,13 @@ function Home() {
             key={character.id}
             imageSrc={character.image}
             title={character.name}
+            species={character.species}
             onClick={() => onClickHandler(character.id)}
           />
         ))}
       </Grid>
     </Container>
-  );
+  )
 }
 
-export default Home;
+export default Home
